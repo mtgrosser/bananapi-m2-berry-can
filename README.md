@@ -16,7 +16,13 @@ In order to make the CAN bus work on BPI M2B, the following steps are required:
 
 ## Hardware modification
 
-TDB
+![Schematic for pins PH20 and PH21](img/schematic.png)
+
+![PCB before modification](img/1.png)
+
+![Components removed](img/2.png)
+
+![CAN pins exposed](img/3.png)
 
 ## Kernel patching
 
