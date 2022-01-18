@@ -26,6 +26,7 @@ has been submitted recently but hasn't made its way yet into the current version
 patch and rebuild the module manually.
 
 ```sh
+cp -rv /usr/src/linux-source-5.10.60-sunxi kernel-source
 cd kernel-source
 patch -p1 < sun4i_can.patch
 cp /boot/config-5.10.60-sunxi .config
