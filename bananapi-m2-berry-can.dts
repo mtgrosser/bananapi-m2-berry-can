@@ -1,0 +1,44 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "sun8i-r40";
+
+	fragment@0 {
+		target-path = "/leds";
+		__overlay__ {
+
+			compatible = "";
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target = <&pio>;
+		__overlay__ {
+
+			can_ph_pins: can-ph-pins {
+				pins = "PH20", "PH21";
+				function = "can";
+			};
+		};
+	};
+
+
+	fragment@2 {
+		target-path = "/soc";
+		__overlay__ {
+
+			can0: can@1c2bc00 {
+				compatible = "allwinner,sun8i-r40-can";
+				reg = <0x01c2bc00 0x400>;
+				interrupts = <0 26 4>;
+				clocks = <&ccu 91>;
+				resets = <&ccu 68>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&can_ph_pins>;
+				status = "okay";
+			};
+		};
+	};
+};
