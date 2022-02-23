@@ -16,6 +16,20 @@ In order to make the CAN bus work on BPI M2B, the following steps are required:
 
 ## Hardware modification
 
+The Allwinner V40 pinctl allows routing CAN pins to either PA16/PA17 and PH20/PH21.
+By default, PA16/17 are used for ethernet, and PH20/21 for adressing the red and green LED.
+
+In order to use PH20/21 for CAN, the driver transistors Q4 and Q5 need to be removed,
+as well as resistors R97, R101 and R110.
+
+R101 and R110 need to be replaced by solder bridges or 0402 zero-ohm links.
+
+The CPU CAN pins can then be accessed through the transistor base pads:
+
+:blue_square: CAN_TX (PH20): Q4
+
+:green_square: CAN_RX (PH21): Q5
+
 ![Schematic for pins PH20 and PH21](img/schematic.png)
 
 ![PCB before modification](img/1.png)
