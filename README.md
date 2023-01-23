@@ -11,7 +11,7 @@ and Ethernet instead.
 In order to make the CAN bus work on BPI M2B, the following steps are required:
 
 - Hardware modification
-- Kernel patching
+- Kernel patching (kernels < 5.17 only)
 - Device tree overlay
 
 ## Hardware modification
@@ -41,10 +41,11 @@ The CPU CAN pins can then be accessed through the transistor base pads:
 
 ## Kernel patching
 
-The current version of Armbian Focal does not support CAN operation due to an incompatibilty
-in the `sun4i_can` kernel module. A [patch](https://lore.kernel.org/linux-arm-kernel/20220111155709.56501-2-boger@wirenboard.com/)
-has been submitted recently but hasn't made its way yet into the current version, so we need to
-patch and rebuild the module manually.
+As of kernel version 5.17, no patching is required.
+
+Kernels < 5.17 don't support CAN operation with BPI-M2B due to an incompatibilty
+in the `sun4i_can` kernel module. Therefore, the [patch](https://lore.kernel.org/linux-arm-kernel/20220111155709.56501-2-boger@wirenboard.com/)
+needs to be backported and the module needs to be rebuilt manually.
 
 ```sh
 cp -rv /usr/src/linux-source-5.10.60-sunxi kernel-source
