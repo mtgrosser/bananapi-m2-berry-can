@@ -36,6 +36,8 @@ The CPU CAN pins can then be accessed through the transistor base pads:
 
 ![Green square](img/green.png) CAN_RX (PH21): Q5
 
+Note: The black wire was connected for measuring purposes only, and is not required.
+
 ![CAN pins exposed](img/3.png)
 
 
